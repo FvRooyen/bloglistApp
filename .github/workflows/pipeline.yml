@@ -18,7 +18,9 @@ jobs:
           node-version: '16'
       - name: Install dependencies
         run: npm install
+      - name: Install frontend dependencies
         run: npm run frontend:install
+      - name: Install backend dependencies
         run: npm run backend:install
       - name: Check style
         run: npm run eslint
