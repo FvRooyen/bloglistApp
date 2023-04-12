@@ -17,6 +17,10 @@
         "start:dev": "cd backend && npm run dev",
         "start:test": "cd backend && npm run start:test"
     },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/FvRooyen/bloglistApp.git"
+    },
     "eslintConfig": {
         "extends": [
             "react-app",
