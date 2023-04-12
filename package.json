@@ -21,11 +21,6 @@
         "type": "git",
         "url": "git+https://github.com/FvRooyen/bloglistApp.git"
     },
-    "eslintConfig": {
-        "extends": [
-            "react-app/jest"
-        ]
-    },
     "devDependencies": {
         "cypress": "^12.9.0",
         "eslint": "^8.37.0",
