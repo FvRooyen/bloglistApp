@@ -34,11 +34,11 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           install: false
-          command: npm run test:e2e
           start: |
             npm run start:test
             npm run start:frontend
           wait-on: 'http://localhost:3003'
+          command: npm run test:e2e
       - name: Render Deploy Action
         if: ${{ github.event_name == 'push' && !contains(toJson(join(github.event.commits.*.message)), '#skip') }}
         uses: johnbeynon/render-deploy-action@v0.0.8
