@@ -34,9 +34,7 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           install: false
-          start: |
-            npm run start:test
-            npm run start:frontend
+          start: npm run start:test
           wait-on: 'http://localhost:3003'
           command: npm run test:e2e
       - name: Render Deploy Action
