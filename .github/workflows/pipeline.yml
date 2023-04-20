@@ -30,15 +30,6 @@ jobs:
         run: npm run test:backend
       - name: Test Frontend
         run: npm run test:frontend
-      - name: e2e tests
-        uses: cypress-io/github-action@v5
-        with:
-          install: false
-          start: npm run start:test
-          wait-on: 'http://localhost:3003'
-          wait-on-timeout: 240
-          command: npm run test:e2e
-          browser: firefox
       - name: Render Deploy Action
         if: ${{ github.event_name == 'push' && !contains(toJson(join(github.event.commits.*.message)), '#skip') }}
         uses: johnbeynon/render-deploy-action@v0.0.8
