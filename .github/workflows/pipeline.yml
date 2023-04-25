@@ -45,7 +45,7 @@ jobs:
         if: ${{ github.event_name == 'push' && !contains(toJson(join(github.event.commits.*.message)), '#skip') }}
         uses: johnbeynon/render-deploy-action@v0.0.8
         with:
-          service-id: srv-cglivcbh4hskd4267dqg?key=k0eAf7RhiG4
+          service-id: ${{ secrets.RENDER_SERVICE_ID }}
           api-key: ${{ secrets.RENDER_API }}
       - name: Discord Webhook Notify
         if: ${{ success() }}
