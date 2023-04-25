@@ -46,7 +46,7 @@ jobs:
         uses: johnbeynon/render-deploy-action@v0.0.8
         with:
           service-id: srv-cglivcbh4hskd4267dqg?key=k0eAf7RhiG4
-          api-key: rnd_ULY6hWR0bhKM4newg2JM9iLfvIL3
+          api-key: ${{ secrets.RENDER_API }}
       - name: Discord Webhook Notify
         if: ${{ success() }}
         uses: rjstone/discord-webhook-notify@v1.0.4
