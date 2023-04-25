@@ -30,6 +30,17 @@ jobs:
         run: npm run test:backend
       - name: Test Frontend
         run: npm run test:frontend
+      - name: Cypress.io
+        uses: cypress-io/github-action@v5.6.1
+        with:
+          # Command that overrides cypress run
+          command: npm run test:e2e
+          # Command for starting local server in the background
+          start: npm run start:test
+          # Whether or not to run install
+          install: false
+          # Local server URL to wait for
+          wait-on: http://localhost:3003
       - name: Render Deploy Action
         if: ${{ github.event_name == 'push' && !contains(toJson(join(github.event.commits.*.message)), '#skip') }}
         uses: johnbeynon/render-deploy-action@v0.0.8
