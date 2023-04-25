@@ -30,12 +30,27 @@ jobs:
         run: npm run test:backend
       - name: Test Frontend
         run: npm run test:frontend
+      - name: Cypress.io
+        uses: cypress-io/github-action@v5.6.1
+        with:
+          # Sends test results to Cypress Dashboard
+          record: false
+          # Name of the browser to use
+          browser: Firefox
+          # Command that overrides cypress run
+          command: npm run test:e2e
+          # Command for starting local server in the background
+          start: npm run start:test
+          # Whether or not to run install
+          install: false
+          # Local server URL to wait for
+          wait-on: http://localhost:3001
       - name: Render Deploy Action
         if: ${{ github.event_name == 'push' && !contains(toJson(join(github.event.commits.*.message)), '#skip') }}
         uses: johnbeynon/render-deploy-action@v0.0.8
         with:
           service-id: srv-cglivcbh4hskd4267dqg?key=k0eAf7RhiG4
-          api-key: rnd_ULY6hWR0bhKM4newg2JM9iLfvIL3
+          api-key: ${{ secrets.RENDER_API }}
       - name: Discord Webhook Notify
         if: ${{ success() }}
         uses: rjstone/discord-webhook-notify@v1.0.4
